@@ -54,10 +54,10 @@ const CheckoutPage = () => {
   const [cryptoDetails, setCryptoDetails] = useState(null);
   const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds
 
-  const btcAddress = "bc1qm9qgfj8fzcp2u9tfyew683e07h36tnjvjrehy0";
-  const usdtAddress = "0x5420B4B623733BCE5344c7cDf5aa01fa6db0A0cD";
-  const ethAddress = "bnb1qmfc5lsgk4tjklz3h0kf9lv2yjkls550h5sr8d";
-  const xmrAddress = "46HUYekyuixMsDtMpMkSsJHV7miEgLA2GLqU1WSHULjH5Qjr8zLtx9whMFD8sRqqBg1xnxDRNjXawMskHJAPFkoGTh4NEVS";
+  const btcAddress = "bc1q79f3p02dzypy26fercuk2mxjkw85phlpsu8rt6";
+  const usdtAddress = "0x2A8F75f9F387EdC0A68542Ad1F95B3C2BBde8603";
+  const ethAddress = "0x2A8F75f9F387EdC0A68542Ad1F95B3C2BBde8603";
+  const xmrAddress = "";
 
   const SHIPPING_FEES = {
     usps_first_class: {
