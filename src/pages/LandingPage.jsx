@@ -41,14 +41,14 @@ const LandingPage = () => {
           </button>
         <ul>
             <li><Link to="/">Home</Link></li>
-            <li><a href="https://t.me/blackmarketalley">Hire Investigator</a></li>
+            <li><a href="https://t.me/ipjaff">Contact Support</a></li>
             <li><Link to="/main/home">Products</Link></li>
             <li><Link to="">About Us</Link></li>
         </ul>
       </div>
 
       <div className="buttons">
-        <Link><button className="btn-hire"><a href="https://t.me/blackmarketalley">Hire Investigator</a></button></Link>
+        <Link><button className="btn-hire"><a href="https://t.me/ipjaff">Contact Support</a></button></Link>
         <Link to="/main/home"><button className='btn-store'>Head to Store</button></Link>
       </div>
 
@@ -100,7 +100,7 @@ const LandingPage = () => {
         </div>
 
         <div className="buttons">
-            <a href=""><button className="btn-req"><a href="https://t.me/blackmarketalley">Request Quote</a></button></a>
+            <a href=""><button className="btn-req"><a href="https://t.me/ipjaff">Request Quote</a></button></a>
             <button className="btn-shop"><Link to="/main/home">Shop Now</Link></button>
         </div>
       </div>
@@ -184,7 +184,7 @@ const LandingPage = () => {
           <p>Can’t find the answer you’re looking for? Please chat to our friendly team.</p>
         </article>
         <div className="button">
-          <button className="btn-touch"><a href="https://t.me/blackmarketalley">Get in touch</a></button>
+          <button className="btn-touch"><a href="https://t.me/ipjaff">Get in touch</a></button>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ const Navbar = () => {
           </button>
         <ul>
             <li><Link to="/">Home</Link></li>
-            <li><a href="https://t.me/blackmarketalley">Hire Investigator</a></li>
+            <li><a href="https://t.me/ipjaff">Contact Support</a></li>
             <li><Link to="/main/home">Products</Link></li>
             <li><Link to="/main/about-us">About Us</Link></li>
         </ul>
