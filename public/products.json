@@ -2,7 +2,7 @@
     {
         "id": 1,
         "images": ["/images/1.jpg"],
-        "name": "$20 usd banknotes pack",
+        "name": "product1",
         "price": "290",
         "summary": "3000 pieces of counterfeit 20 usd banknotes",
         "category": "Money",
@@ -19,7 +19,7 @@
     {
         "id": 2,
         "images": ["/images/2.jpg", "/images/4.png"],
-        "name": "£20 gbp banknotes pack",
+        "name": "product2",
         "price": "290",
         "summary": "3000 pieces of counterfeit 20 gbp banknotes",
         "category": "Money",
@@ -36,7 +36,7 @@
     {
         "id": 3,
         "images": ["/images/5.jpg", "/images/6.jpg", "/images/7.jpg"],
-        "name": "€20 euro banknotes pack",
+        "name": "product3",
         "price": "290",
         "summary": "3000 pieces of counterfeit 20 Euro banknotes",
         "category": "Money",
