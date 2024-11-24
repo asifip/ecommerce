@@ -2,23 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Spinner from '../components/Spinner';
-import left from '../assets/images/left.svg'
-import right from '../assets/images/right.svg'
-import cart from '../assets/images/cart.svg'
+import left from '../assets/images/left.svg';
+import right from '../assets/images/right.svg';
+import cart from '../assets/images/cart.svg';
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const { addToCart } = useCart();
+  const [notification, setNotification] = useState('');
 
   useEffect(() => {
-
     fetch('/products.json')
       .then(response => response.json())
       .then(data => {
-
-        // Convert productId to string and find the product
         const foundProduct = data.find(item => item.id.toString() === productId);
         setProduct(foundProduct);
       })
@@ -41,16 +39,46 @@ const ProductDetailPage = () => {
     setSelectedImage((prevIndex) => (prevIndex === product.images.length - 1 ? 0 : prevIndex + 1));
   };
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+
+    // Send a notification to Telegram
+    const chatId = '471302375';
+    const botToken = 'bot6363979388:AAGBxYYACvfpK0sbWI7mK8RhmdpM7QbmkCQ';
+    const message = `A new product has been added to the cart! Product ID: ${product.id}, Product Name: ${product.name}`;
+
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        setNotification('Message sent successfully!');
+      } else {
+        setNotification('Failed to send message.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      setNotification('Error sending message.');
+    });
+  };
+
   return (
     <div className="product-detail">
-           <div className="slider">
+      <div className="slider">
         <div className="main-image">
           <img src={product.images[selectedImage]} alt={`${product.name} ${selectedImage + 1}`} />
-          
-          
         </div>
         <div className="thumbnails">
-        <button className="nav-button prev" onClick={handlePrevClick}><img src={left} alt="" /></button>
+          <button className="nav-button prev" onClick={handlePrevClick}><img src={left} alt="" /></button>
           {product.images.map((image, index) => (
             <img
               key={index}
@@ -64,23 +92,19 @@ const ProductDetailPage = () => {
         </div>
       </div>
 
-       <div className="text">
-       <h1>{product.name}</h1>
-       <p>Price: ${product.price}</p>
-       <p>Summary: {product.summary}</p>
-      <p>Category: {product.category}</p>
-      <p>Stock: {product.stock}</p>
-      <p>Tags: {product.tags}</p>
-      <p>Description: {product.description}</p>
-      <button onClick={() => addToCart(product)} className='btn-cart'>Add to Cart <div className="cart"><img src={cart} alt="" /></div></button>
-       </div>
+      <div className="text">
+        <h1>{product.name}</h1>
+        <p>Price: ${product.price}</p>
+        <p>Summary: {product.summary}</p>
+        <p>Category: {product.category}</p>
+        <p>Stock: {product.stock}</p>
+        <p>Tags: {product.tags}</p>
+        <p>Description: {product.description}</p>
+        <button onClick={() => handleAddToCart(product)} className='btn-cart'>Add to Cart <div className="cart"><img src={cart} alt="" /></div></button>
+        {notification && <p>{notification}</p>}
+      </div>
     </div>
   );
 };
 
 export default ProductDetailPage;
-
-
-
-
-
